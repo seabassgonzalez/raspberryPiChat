@@ -1,0 +1,10 @@
+// A list of dependencies
+{
+  "name": "scotch-chat",
+  "main": "server.js",
+  "dependencies": {
+    "mongoogse": "latest",
+    "morgan": "latest",
+    "socket.io": "latest"
+  }
+}
