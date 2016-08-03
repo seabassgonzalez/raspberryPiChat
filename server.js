@@ -38,7 +38,8 @@ app.all("*", function(req, res, next){
 // routes
 
 // index file
-app.get(function(req, res){
+app.get('/', function(req, res){
   // send index.html from public directory
   res.sendfile('index.html');
 });
+
