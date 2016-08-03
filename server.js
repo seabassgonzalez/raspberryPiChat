@@ -34,12 +34,31 @@ app.all("*", function(req, res, next){
   }
 });
 
-
 // routes
 
 // index file
-app.get('/', function(req, res){
   // send index.html from public directory
+app.get('/', function(req, res){
   res.sendfile('index.html');
 });
 
+// Create random content generator for initial chat history
+app.contentGenerator('/', function(){
+
+});
+
+// Run on launch to generate initial chat history
+  // Make an array of chat objects formatted same as above
+app.post('/setup', function(req, res){
+  var chatData = [{
+    created: new Date(),
+    content: contentGenerator();
+  }), {
+
+  }, {
+
+  }, {
+
+  }
+
+}
