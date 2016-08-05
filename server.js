@@ -34,7 +34,10 @@ app.all("*", function(req, res, next){
   }
 });
 
+
+
 // routes
+
 
 // index file
   // send index.html from public directory
@@ -43,22 +46,67 @@ app.get('/', function(req, res){
 });
 
 // Create random content generator for initial chat history
+  // Instantiate list of messages
+  // Iterate through the list of messages
+    // Randomly select a message from the array of messages
+      // Send message as current content
+      // Remove list of messages -- pop or delete I guess
 app.contentGenerator('/', function(){
+
+});
+
+// Create random username generator for initial chat history
+app.usernameGenerator('/', function(){
+
+});
+
+// Create random roomname generator for initial chat history
+app.roomnameGenerator('/', function(){
 
 });
 
 // Run on launch to generate initial chat history
   // Make an array of chat objects formatted same as above
 app.post('/setup', function(req, res){
-  var chatData = [{
+  var chatData = [
+  {
+    created: new Date(),  
+    content: contentGenerator();
+    username: usernameGenerator();
+    room: roomnameGenerator();
+  }, {
     created: new Date(),
     content: contentGenerator();
-  }), {
-
+    username: usernameGenerator();
+    room: roomnameGenerator();
   }, {
-
+    created: new Date(),
+    content: contentGenerator();
+    username: usernameGenerator();
+    room: roomnameGenerator();
   }, {
-
+    created: new Date(),
+    content: contentGenerator();
+    username: usernameGenerator();
+    room: roomnameGenerator();
   }
 
+}];
+
+// Loop through each chat data
+  // Create a new instance of the chat model
+  // call save to insert the chat
+for(var i=0; i < chatData.length; i++){
+  var newChat = new Chat(chatData[i]);
+  newChat.save(function(err, savedChat){
+    console.log(savedChat);
+  });
 }
+// Send response
+res.send('created');
+});
+
+
+
+
+
